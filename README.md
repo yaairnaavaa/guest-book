@@ -25,7 +25,7 @@ npm run deploy-mainnet
 ## 2. Recuperar mensajes guardados
 
 ```bash
-near view <contract-account> get_messages '{"from_index":0, "limit":10}'
+near view owaguestbook.testnet get_messages '{"from_index":0, "limit":10}'
 ```
 
 <br />
@@ -33,9 +33,15 @@ near view <contract-account> get_messages '{"from_index":0, "limit":10}'
 ## 3. Agregar nuevo mensaje
 
 ```bash
-near call <contract-account> add_message '{"text": "a message"}' --accountId <account>
+near call owaguestbook.testnet add_message '{"text": "Primer mensaje"}' --accountId yairnava.testnet
 ```
 
 ```bash
-near call <contract-account> add_message '{"text": "a message"}' --amount 0.1 --accountId <account>
+near call owaguestbook.testnet add_message '{"text": "Primer mensaje premium"}' --amount 0.1 --accountId yairnava.testnet
+```
+
+## 3. Obtener cantidad de mensajes guardados
+
+```bash
+near view owaguestbook.testnet total_messages
 ```

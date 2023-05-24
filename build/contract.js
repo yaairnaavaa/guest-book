@@ -818,28 +818,36 @@ var _dec, _dec2, _dec3, _dec4, _class, _class2;
 let GuestBook = (_dec = NearBindgen({}), _dec2 = call({
   payableFunction: true
 }), _dec3 = view(), _dec4 = view(), _dec(_class = (_class2 = class GuestBook {
-  messages = new Vector("v-uid");
+  // Vector donde almacenaremos todos los mensajes
+  messages = new Vector("m");
   add_message({
     text
   }) {
-    // If the user attaches more than 0.1N the message is premium
+    // Si se adjunta 0.1 NEAR o más, será un mensaje premium
     const premium = attachedDeposit() >= BigInt(POINT_ONE);
+
+    // Recuperamos la cuenta que firma la transacción
     const sender = predecessorAccountId();
+
+    // Creamos una constante con sus valores
     const message = {
       premium,
       sender,
       text
     };
+
+    // Agregamos el mensaje al vector
     this.messages.push(message);
   }
-  // Returns an array of messages.
   get_messages({
     from_index = 0,
     limit = 10
   }) {
+    // Recuperamos los mensajes en el segmente solicitado
     return this.messages.toArray().slice(from_index, from_index + limit);
   }
   total_messages() {
+    // Recuperamos el total de mensajes
     return this.messages.length;
   }
 }, (_applyDecoratedDescriptor(_class2.prototype, "add_message", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "add_message"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "get_messages", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "get_messages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "total_messages", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "total_messages"), _class2.prototype)), _class2)) || _class);

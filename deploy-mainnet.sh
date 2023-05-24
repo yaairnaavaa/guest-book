@@ -6,4 +6,4 @@ npm run build
 # deploy the contract
 echo Ingrese la cuenta:
 read account
-NEAR_ENV=mainnet near deploy $account --wasmFile build/contract.wasm;
+NEAR_ENV=mainnet near deploy owaguestbook.testnet --wasmFile build/contract.wasm;
